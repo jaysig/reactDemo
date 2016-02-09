@@ -20,13 +20,36 @@
 					}
 				},
 				render: function(){
+					var greeting = "World";
+
+					if(this.props.isPerson){
+						greeting = (<Person name={this.props.name} />)
+					}
 					return (
-						<h1> Hello {this.props.name}</h1>
+						<h1> Hello {greeting}</h1>
+					)
+				}
+			});
+
+			var Person = React.createClass({
+				propTypes: {
+					name: React.PropTypes.string,
+					isPerson: React.PropTypes.bool
+				},
+
+				getDefaultProps: function(){
+					return {
+						name:'Jay'
+					}
+				},
+				render: function(){
+					return (
+						<span>{this.props.name}</span>
 					)
 				}
 			});
 			ReactDOM.render(
-					<HelloWorld name="Jason"/>,
+					<HelloWorld name="Jason" isPerson={true}/>,
 					document.getElementById('area')
 				);
 		</script>
