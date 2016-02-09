@@ -8,8 +8,25 @@
 	<body>
 		<div id="area"></div>
 		<script type="text/babel">
+			//Forces the propType to be a string
+			var HelloWorld = React.createClass({
+				propTypes: {
+					name: React.PropTypes.string
+				},
+
+				getDefaultProps: function(){
+					return {
+						name:'Jay'
+					}
+				},
+				render: function(){
+					return (
+						<h1> Hello {this.props.name}</h1>
+					)
+				}
+			});
 			ReactDOM.render(
-					<h1>HELLO</h1>,
+					<HelloWorld name="Jason"/>,
 					document.getElementById('area')
 				);
 		</script>
